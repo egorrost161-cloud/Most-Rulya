@@ -4,6 +4,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.media.MediaMetadata;
+import android.media.browse.MediaBrowser;
 import android.media.session.MediaController;
 import android.media.session.MediaSession;
 import android.media.session.MediaSessionManager;
@@ -116,7 +117,7 @@ public class WheelBridgeService extends MediaBrowserService {
     }
 
     @Override
-    public void onLoadChildren(String parentId, Result<List<MediaBrowserService.MediaItem>> result) {
+    public void onLoadChildren(String parentId, Result<List<MediaBrowser.MediaItem>> result) {
         result.sendResult(new ArrayList<>());
     }
 
