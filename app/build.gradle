@@ -12,11 +12,6 @@ android {
         targetSdk 28
         versionCode 1
         versionName "1.0"
-
-        // 32-битная ARM-архитектура (armeabi-v7a)
-        ndk {
-            abiFilters 'armeabi-v7a'
-        }
     }
 
     buildTypes {
@@ -30,15 +25,8 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
-    // Не сжимать ресурсы — нам нужны все строки
-    packagingOptions {
-        resources {
-            excludes += ['META-INF/*.kotlin_module']
-        }
-    }
 }
 
 dependencies {
-    implementation 'androidx.annotation:annotation:1.6.0'
+    // Зависимостей нет — используем только Android SDK
 }
