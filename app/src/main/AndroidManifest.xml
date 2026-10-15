@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.lada.wheelbridge">
+
+    <!-- Разрешения -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" />
+
+    <!-- Приложение для Android Automotive (используется Яндекс.Авто) -->
+    <uses-feature
+        android:name="android.hardware.type.automotive"
+        android:required="false" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.DeviceDefault">
+
+        <!-- Meta-data: сообщает Яндекс.Авто, что мы — автомобильное приложение -->
+        <meta-data
+            android:name="com.google.android.gms.car.application"
+            android:resource="@xml/automotive_app_desc" />
+
+        <!-- Главный экран приложения -->
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Главный сервис-мост: MediaBrowserService для Яндекс.Авто -->
+        <service
+            android:name=".WheelBridgeService"
+            android:exported="true"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.media.browse.MediaBrowserService" />
+            </intent-filter>
+
+            <!-- Ключевые meta-data: регистрируют нас как аудиоисточник Яндекс.Авто -->
+            <meta-data
+                android:name="yandex.auto.uma.AudioSource"
+                android:value="true" />
+            <meta-data
+                android:name="browser"
+                android:value="false" />
+        </service>
+
+        <!-- Слушатель уведомлений: определяет активный плеер -->
+        <service
+            android:name=".WheelNotificationListener"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+
+    </application>
+</manifest>
