@@ -1,4 +1,4 @@
-// Корневой build.gradle — общие настройки для всего проекта
+// Корневой build.gradle
 buildscript {
     repositories {
         google()
