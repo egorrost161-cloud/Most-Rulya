@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Название приложения (видно в списке приложений и в Яндекс.Авто) -->
+    <string name="app_name">Мост руля</string>
+
+    <!-- Статусы на экране настроек -->
+    <string name="status_access_granted">Доступ выдан ✅\nМост руля работает</string>
+    <string name="status_access_missing">Нужен доступ к уведомлениям\n\nНажмите кнопку ниже и включите «Мост руля» в списке</string>
+    <string name="status_cannot_open">Не удалось открыть настройки\nОткройте вручную: Настройки → Приложения → Специальный доступ → Доступ к уведомлениям</string>
+
+    <!-- Текст кнопки -->
+    <string name="button_open_settings">Открыть настройки доступа</string>
+</resources>
